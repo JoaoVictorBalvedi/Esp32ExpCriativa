@@ -33,7 +33,7 @@ alarme_ativo = False
 def tratar_mensagem(topic, msg):
     global alarme_ativo
     print("Mensagem recebida:", msg)
-    if chave.value() == 0:  # Verifica se a chave está na posição desativada
+    if chave.value() == 0:  
         if msg == b"umidade baixa":
             alarme_ativo = True
         elif msg == b"umidade normalizada":
@@ -46,22 +46,22 @@ def alarme():
     global alarme_ativo
     while True:
         if alarme_ativo:
-            buzzer.duty(512)  # Liga o buzzer
-            led.on()  # Liga o LED
+            buzzer.duty(512) 
+            led.on() 
             sleep(1)
-            buzzer.duty(0)  # Desliga o buzzer
-            led.off()  # Desliga o LED
+            buzzer.duty(0)  
+            led.off()  
             sleep(1)
         else:
-            buzzer.duty(0)  # Garante que o buzzer esteja desligado
-            led.off()  # Garante que o LED esteja desligado
+            buzzer.duty(0)  
+            led.off() 
         sleep(0.1)
 
 _thread.start_new_thread(alarme, ())
 
 try:
     while True:
-        client.check_msg()  # Verifica se há mensagens novas
+        client.check_msg() 
         sleep(0.1)
 except KeyboardInterrupt:
     print("Encerrando programa...")

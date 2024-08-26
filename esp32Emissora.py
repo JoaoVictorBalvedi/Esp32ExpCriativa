@@ -53,11 +53,11 @@ def monitorar_sensor1():
 
                 if temp >= 60:
                     print("Temperatura alta no sensor 1! Abrindo comporta 1 em 50°")
-                    servo1.duty(calcular_duty(50))  # Abrir servo 1 em 50°
+                    servo1.duty(calcular_duty(50)) 
                 else:
                     print("Temperatura normal no sensor 1.")
-                    servo1.duty(calcular_duty(0))  # Fechar servo 1
-
+                    servo1.duty(calcular_duty(0))
+                    
                 if umidade < 20:
                     if not umidade_baixa:
                         print("Umidade baixa detectada no sensor 1! Enviando alerta...")
@@ -72,7 +72,7 @@ def monitorar_sensor1():
                 print("Erro ao ler sensor 1:", e)
         else:
             print("Chave desativada. Fechando comporta 1")
-            servo1.duty(calcular_duty(0))  # Fechar servo 1
+            servo1.duty(calcular_duty(0))  
         time.sleep(2)
 
 def monitorar_sensor2():
@@ -88,10 +88,10 @@ def monitorar_sensor2():
 
                 if temperatura >= 60:
                     print("Temperatura alta no sensor 2! Abrindo comporta 2 em 180°")
-                    servo2.duty(calcular_duty(180))  # Abrir servo 2 em 180°
+                    servo2.duty(calcular_duty(180)) 
                 else:
                     print("Temperatura normal no sensor 2.")
-                    servo2.duty(calcular_duty(0))  # Fechar servo 2
+                    servo2.duty(calcular_duty(0))  
 
                 if umidade < 20:
                     if not umidade_baixa:
@@ -107,7 +107,7 @@ def monitorar_sensor2():
                 print("Erro ao ler sensor 2:", e)
         else:
             print("Chave desativada. Fechando comporta 2")
-            servo2.duty(calcular_duty(0))  # Fechar servo 2
+            servo2.duty(calcular_duty(0))  
         time.sleep(2)
 
 def enviar_alerta(tipo_alerta):
